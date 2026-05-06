@@ -26,7 +26,19 @@ async function apiRequest(endpoint, method, body = null) {
 export async function getTransacoes() { return apiRequest('/transacoes', 'GET'); }
 export async function getResumo() { return apiRequest('/transacoes/resumo', 'GET'); }
 export async function createTransacao(data) { return apiRequest('/transacoes', 'POST', data); }
-export async function deleteTransacao(id) { return apiRequest(`/transacoes/${id}`, 'DELETE'); }
+
+export async function deleteTransacao(id) {
+    console.log('Deletando transação ID:', id);
+    const token = sessionStorage.getItem('token');
+    const response = await fetch(`${API_BASE}/transacoes/${id}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${token}` }
+    });
+    console.log('Status da resposta:', response.status);
+    if (!response.ok) throw new Error(`Erro ${response.status}: ${await response.text()}`);
+
+
+
 export async function logout() {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('usuario');
