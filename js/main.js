@@ -31,6 +31,7 @@ async function loadDashboardData() {
         atualizarTabela(transacoes);
         atualizarCategorias(transacoes);
         atualizarGraficoPizza(transacoes);
+        setupDeleteButtons(loadDashboardData)
     } catch (err) {
         showToast('Erro ao carregar dados: ' + err.message, true);
     }
