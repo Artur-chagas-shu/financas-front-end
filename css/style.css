@@ -213,6 +213,12 @@ input:checked + .slider:before { transform: translateX(28px); content: "🌙"; }
     border-left: 4px solid #4f46e5;
     padding-left: 0.75rem;
 }
+
+.panel canvas {
+    max-width: 100%;
+    height: auto !important;
+    max-height: 250px;
+}
 .full-width {
     grid-column: 1 / -1;
 }
@@ -353,10 +359,52 @@ input:checked + .slider:before { transform: translateX(28px); content: "🌙"; }
 }
 
 /* Responsividade */
+/* Força quebra do grid em mobile */
 @media (max-width: 768px) {
-    body { padding: 1rem; }
-    .two-columns { grid-template-columns: 1fr; }
-    .card .value { font-size: 1.6rem; }
-    .header { flex-direction: column; text-align: center; }
-    .header-actions { justify-content: center; }
+    .cards-grid {
+        grid-template-columns: 1fr; /* cada card ocupa toda a largura */
+        gap: 1rem;
+    }
+    
+    .two-columns {
+        grid-template-columns: 1fr; /* gráfico e categorias em coluna única */
+        gap: 1rem;
+    }
+    
+    /* Ajusta padding interno dos painéis */
+    .panel {
+        padding: 1rem;
+    }
+    
+    /* Tabela – ativa scroll horizontal apenas se necessário */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Ajusta cards */
+    .card .value {
+        font-size: 1.5rem;
+    }
+    
+    /* Ajusta header – empilha itens */
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .header-actions {
+        justify-content: center;
+    }
+    
+    /* Lista de categorias – reduz fontes */
+    .categoria-item {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .categoria-valor, .categoria-nome {
+        font-size: 0.9rem;
+    }
+    .progress-bar {
+        width: 100%;
+    }
 }
