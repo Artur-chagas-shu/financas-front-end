@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finanças Pro | Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <h1><i class="fas fa-coins"></i> Finanças Pro</h1>
+                <p>Controle inteligente do seu dinheiro</p>
+            </div>
+            <div class="header-actions">
+                <div class="theme-switch">
+                    <i class="fas fa-sun"></i>
+                    <label class="switch">
+                        <input type="checkbox" id="themeToggle">
+                        <span class="slider"></span>
+                    </label>
+                    <i class="fas fa-moon"></i>
+                </div>
+                <button class="btn-primary" id="newTransactionBtn">
+                    <i class="fas fa-plus-circle"></i> Nova Transação
+                </button>
+                <!-- Botão de logout será inserido via JS -->
+            </div>
+        </div>
+
+        <!-- Cards resumo -->
+        <div class="cards-grid">
+            <div class="card saldo">
+                <div class="card-header">
+                    <span class="label">SALDO TOTAL</span>
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="value" id="saldoTotal">R$ 0,00</div>
+                <div class="trend"><i class="fas fa-chart-line"></i> Atualizado agora</div>
+            </div>
+            <div class="card receitas">
+                <div class="card-header">
+                    <span class="label">RECEITAS</span>
+                    <i class="fas fa-arrow-up"></i>
+                </div>
+                <div class="value" id="totalReceitas">R$ 0,00</div>
+                <div class="trend"><i class="fas fa-trend-up"></i> Total de entradas</div>
+            </div>
+            <div class="card despesas">
+                <div class="card-header">
+                    <span class="label">DESPESAS</span>
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+                <div class="value" id="totalDespesas">R$ 0,00</div>
+                <div class="trend"><i class="fas fa-trend-down"></i> Total de saídas</div>
+            </div>
+        </div>
+
+        <!-- Gráfico e categorias -->
+        <div class="two-columns">
+            <div class="panel">
+                <h2><i class="fas fa-chart-pie"></i> Distribuição de gastos</h2>
+                <canvas id="pieChart" width="400" height="300"></canvas>
+            </div>
+            <div class="panel">
+                <h2><i class="fas fa-tags"></i> Gastos por categoria</h2>
+                <div id="categoriasList" class="categorias-list"></div>
+            </div>
+        </div>
+
+        <!-- Tabela de lançamentos -->
+        <div class="panel full-width">
+            <h2><i class="fas fa-list-ul"></i> Últimos lançamentos</h2>
+            <div class="table-responsive">
+                <table class="transacoes-table">
+                    <thead>
+                        <tr><th>Descrição</th><th>Categoria</th><th>Valor</th><th>Tipo</th><th>Ações</th></tr>
+                    </thead>
+                    <tbody id="transacoesTableBody">
+                        <tr><td colspan="5" style="text-align: center;">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nova Transação -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-plus-circle"></i> Nova transação</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="transactionForm">
+                <div class="form-group">
+                    <label><i class="fas fa-tag"></i> Descrição</label>
+                    <input type="text" id="descricao" required placeholder="Ex: Salário, Uber...">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-dollar-sign"></i> Valor (R$)</label>
+                    <input type="number" id="valor" step="0.01" required placeholder="0,00">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-exchange-alt"></i> Tipo</label>
+                    <select id="tipo">
+                        <option value="RECEITA">💰 Receita</option>
+                        <option value="DESPESA">💸 Despesa</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-folder"></i> Categoria</label>
+                    <select id="categoria">
+                        <option value="Alimentação">🍔 Alimentação</option>
+                        <option value="Transporte">🚗 Transporte</option>
+                        <option value="Moradia">🏠 Moradia</option>
+                        <option value="Saúde">🏥 Saúde</option>
+                        <option value="Educação">📚 Educação</option>
+                        <option value="Lazer">🎬 Lazer</option>
+                        <option value="Salário">💼 Salário</option>
+                        <option value="Outros">📦 Outros</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary btn-block">Salvar lançamento</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMsg">Operação concluída</span>
+    </div>
+
+    <!-- Scripts (módulos ES6) -->
+    <script src="js/utils.js"></script>
+<script src="js/dashboard.js" type="module"></script>
+<script src="js/forms.js" type="module"></script>
+<script src="js/api.js" type="module"></script>
+<script src="js/main.js" type="module"></script>
+</body>
+</html>
