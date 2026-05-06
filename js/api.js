@@ -43,4 +43,4 @@ export async function logout() {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('usuario');
     window.location.href = 'login.html';
-}
+}}
