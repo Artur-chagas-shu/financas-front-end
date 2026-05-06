@@ -1,10 +1,10 @@
 import { getTransacoes, getResumo, logout } from './api.js';
 import { atualizarCards, atualizarTabela, atualizarCategorias, atualizarGraficoPizza } from './dashboard.js';
 import { showToast } from './utils.js';
-import { initForms } from './forms.js';
-
+import { initForms, setupDeleteButtons } from './forms.js';
 // Verifica se está logado
-if (!sessionStorage.getItem('token')) {
+const token = sessionStorage.getItem('token');
+if (!token) {
     window.location.href = 'login.html';
 }
 
