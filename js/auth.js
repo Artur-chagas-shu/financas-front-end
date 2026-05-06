@@ -1,4 +1,4 @@
-const API_BASE = 'https://headed-presence-detection-statement.trycloudflare.com/api';
+const API_BASE = 'https://cubic-dale-fotos-dave.trycloudflare.com';
 
 const loginForm = document.getElementById('loginForm');
 const registerForm = document.getElementById('registerForm');

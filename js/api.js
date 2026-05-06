@@ -1,4 +1,4 @@
-const API_BASE = 'https://headed-presence-detection-statement.trycloudflare.com/api';
+const API_BASE = 'https://cubic-dale-fotos-dave.trycloudflare.com';
 
 async function apiRequest(endpoint, method, body = null) {
     const token = sessionStorage.getItem('token');
