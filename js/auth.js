@@ -1,4 +1,4 @@
-const API_BASE = 'https://financas-api-4.onrender.com';
+const API_BASE = 'https://financas-api-1.onrender.com';
 
 const loginForm = document.getElementById('loginForm');
 const registerForm = document.getElementById('registerForm');
