@@ -1,4 +1,4 @@
-const API_BASE = 'https://cubic-dale-fotos-dave.trycloudflare.com';
+const API_BASE = 'https://cubic-dale-fotos-dave.trycloudflare.com/api';
 
 async function apiRequest(endpoint, method, body = null) {
     const token = sessionStorage.getItem('token');
