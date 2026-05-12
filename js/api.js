@@ -1,4 +1,4 @@
-const API_BASE = 'https://financas-api-4.onrender.com/api';
+const API_BASE = 'https://financas-api-1074368894573.europe-west1.run.app/api';
 
 async function apiRequest(endpoint, method, body = null) {
     const token = sessionStorage.getItem('token');

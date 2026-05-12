@@ -1,4 +1,4 @@
-const API_BASE = 'https://financas-api-4.onrender.com/api'; // ou use a URL do túnel atual
+const API_BASE = 'https://financas-api-1074368894573.europe-west1.run.app/api'; // ou use a URL do túnel atual
 
 // Elementos do DOM
 const loginForm = document.getElementById('loginForm');
